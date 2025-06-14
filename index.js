@@ -46,6 +46,7 @@ app.post("/post", async (req, res) => {
     });
     res.status(201).json(post_data);
   } catch (e) {
+    console.error(e)
     res.status(500).json({ messege: "Something went wrong .Try again later" });
   }
 });
@@ -77,6 +78,7 @@ app.get("/users/:id", async (req, res) => {
     }
     return res.status(200).json(sp_user);
   } catch (e) {
+    console.error(e)
     res.status(500).json({ messege: "Something went wrong .Try again later" });
   }
 });
@@ -90,7 +92,7 @@ app.get("/Post", async (req, res) => {
     });
     res.status(201).json(all_post);
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(500).json({ messege: "Something went wrong .Try again later" });
   }
 });
@@ -112,7 +114,7 @@ app.get("/Post/:id", async (req, res) => {
       return res.status(404).json({ messege: "I am sorry the user not found" });
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(500).json({ messege: "Something went wrong .Try again later" });
   }
 });
@@ -133,7 +135,7 @@ app.put("/Post/:id", async (req, res) => {
     });
     res.status(200).json(updates);
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(500).json({ messege: "Something went wrong .Try again later" });
   }
 });
