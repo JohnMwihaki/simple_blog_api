@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 app.post("/users", async (req, res) => {
   try {
     const { firstName, lastName, emailAddress, username } = req.body;
-    const user_data = await client.Users.create({
+    const user_data = await client.users.create({
       data: {
         firstName,
         lastName,
@@ -37,7 +37,7 @@ app.post("/users", async (req, res) => {
 app.post("/post", async (req, res) => {
   try {
     const { title, content, userId } = req.body;
-    const post_data = await client.Post.create({
+    const post_data = await client.post.create({
       data: {
         title,
         content,
@@ -52,7 +52,7 @@ app.post("/post", async (req, res) => {
 //get all users
 app.get("/users", async (req, res) => {
   try {
-    const all_user = await client.Users.findMany({
+    const all_user = await client.users.findMany({
       include: {
         Post: true,
       },
@@ -66,7 +66,7 @@ app.get("/users", async (req, res) => {
 app.get("/users/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const sp_user = await client.Users.findFirst({
+    const sp_user = await client.users.findFirst({
       where: { id: String(id) },
       include: {
         Post: true,
@@ -83,7 +83,7 @@ app.get("/users/:id", async (req, res) => {
 //get all post
 app.get("/Post", async (req, res) => {
   try {
-    const all_post = await client.Post.findMany({
+    const all_post = await client.post.findMany({
       include: {
         user: true,
       },
@@ -98,7 +98,7 @@ app.get("/Post", async (req, res) => {
 app.get("/Post/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const sp_post = await client.Post.findUnique({
+    const sp_post = await client.post.findUnique({
       where: {
         id: String(id),
       },
@@ -122,7 +122,7 @@ app.put("/Post/:id", async (req, res) => {
   try {
     const { title, content } = req.body;
     const { id } = req.params;
-    const updates = await client.Post.update({
+    const updates = await client.post.update({
       where: {
         id: String(id),
       },
@@ -163,7 +163,7 @@ app.put("/Post/:id", async (req, res) => {
 app.delete("/Post/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const del_post = await client.Post.update({
+    const del_post = await client.post.update({
       where: { id: String(id) },
       data: {
         isDeleted: true,
