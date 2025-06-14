@@ -9,7 +9,7 @@ app.use(express.json());
 //Entry point
 
 app.get("/", (req, res) => {
-  console.log("It working i am good");
+  console.log("It working  good");
   res.send("Welcome to blog  API ");
 });
 

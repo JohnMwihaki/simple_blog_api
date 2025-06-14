@@ -6,7 +6,7 @@
   "scripts": {
     "preinstall": "npx only-allow npm",
     "postinstall": "prisma generate",
-    "start": "node index.js",
+    "start": "npx prisma migrate deploy && node index.js",
     "dev": "node --watch index.js",
     "build": "prisma generate",
     "test": "echo \"No tests yet\" && exit 0"
